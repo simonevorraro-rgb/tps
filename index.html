@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CR7Hub · By Simone Vorraro</title>
 
-  <!-- Libreria Canvas Confetti per l'effetto visivo -->
+  <!-- Libreria per i coriandoli al click del tasto SIUUU -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
-    /* STILE GITHUB DARK CON ACCENTI ORO */
+    /* STILI GENERALI (Stile GitHub Dark + Dettagli Oro e Rosso) */
     body {
       background-color: #0d1117;
       color: #c9d1d9;
@@ -18,58 +18,57 @@
       padding: 0;
     }
 
+    /* BARRA DI NAVIGAZIONE */
     header {
       background-color: #161b22;
       border-bottom: 1px solid #30363d;
-      padding: 16px 30px;
+      padding: 14px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .brand {
+    .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #ffffff;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
-    .brand h1 {
-      font-size: 1.2rem;
-      margin: 0;
-      color: #ffffff;
-    }
-
-    .tag-cr7 {
+    .logo-tag {
       background: #f1c40f;
       color: #000;
-      font-weight: bold;
       font-size: 0.75rem;
       padding: 2px 6px;
       border-radius: 4px;
+      font-weight: 800;
     }
 
     .author-badge {
       background-color: #21262d;
       border: 1px solid #30363d;
       color: #58a6ff;
-      padding: 6px 12px;
+      padding: 5px 12px;
       border-radius: 20px;
       font-size: 0.85rem;
       font-weight: 600;
     }
 
+    /* SEZIONE PRINCIPALE (HERO) */
     .hero {
       text-align: center;
       padding: 60px 20px 40px;
     }
 
-    .hero h2 {
+    .hero h1 {
       font-size: 2.5rem;
       color: #ffffff;
       margin-bottom: 10px;
     }
 
-    .hero h2 span {
+    .hero h1 span {
       color: #f1c40f;
     }
 
@@ -79,10 +78,11 @@
       margin-bottom: 30px;
     }
 
+    /* BOTTONE SIUUU */
     .btn-siuuu {
       background-color: #f1c40f;
       color: #000;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: bold;
       padding: 14px 32px;
       border: none;
@@ -96,18 +96,20 @@
       background-color: #d4ac0d;
     }
 
-    .counter-text {
+    /* CONTATORE */
+    .counter-box {
       margin-top: 20px;
-      color: #8b949e;
       font-size: 0.95rem;
+      color: #8b949e;
     }
 
-    .counter-text span {
+    .counter-number {
       color: #ffffff;
       font-weight: bold;
       font-size: 1.2rem;
     }
 
+    /* GRIGLIA REPOSITORY */
     .container {
       max-width: 800px;
       margin: 0 auto;
@@ -116,7 +118,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 16px;
       margin-top: 20px;
     }
@@ -125,7 +127,7 @@
       background-color: #161b22;
       border: 1px solid #30363d;
       border-radius: 6px;
-      padding: 18px;
+      padding: 16px;
     }
 
     .card h3 {
@@ -140,130 +142,132 @@
       font-size: 0.85rem;
     }
 
+    /* FOOTER */
     footer {
       text-align: center;
       padding: 25px;
       border-top: 1px solid #30363d;
       color: #8b949e;
       font-size: 0.85rem;
-      margin-top: 50px;
+      margin-top: 40px;
     }
 
     footer strong {
-      color: #c9d1d9;
+      color: #ffffff;
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
+  <!-- BARRA DI NAVIGAZIONE -->
   <header>
-    <div class="brand">
-      <h1>CR7Hub</h1>
-      <span class="tag-cr7">CR7</span>
+    <div class="logo">
+      <span>CR7Hub</span>
+      <span class="logo-tag">CR7</span>
     </div>
     <div class="author-badge">
-      Sviluppato da Simone Vorraro
+      Creato da Simone Vorraro
     </div>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- SEZIONE PRINCIPALE -->
   <section class="hero">
-    <h2>Programma con la <span>Mentalità Vincente</span></h2>
+    <h1>Codifica con la <span>Mentalità Vincente</span></h1>
     <p>La piattaforma ufficiale per sviluppatori N.1 al mondo.</p>
     
-    <!-- Pulsante gestito in JavaScript -->
-    <button class="btn-siuuu" id="btnSiuuu">⚡ TASTO SIUUU!</button>
+    <!-- Tasto SIUUU collegato via JavaScript -->
+    <button class="btn-siuuu" id="btnSiuuu">⚡ SIUUU!</button>
 
-    <div class="counter-text">
-      Contatore Gol & Commit: <span id="counterValue">777</span>
+    <div class="counter-box">
+      Urli SIUUU lanciati nel mondo: <span class="counter-number" id="count">777</span>
     </div>
   </section>
 
-  <!-- REPOSITORY GRID -->
+  <!-- SEZIONE REPOSITORY -->
   <div class="container">
-    <h3 style="color: #ffffff;">Repository Principali</h3>
+    <h2 style="color: #ffffff; font-size: 1.2rem; margin-bottom: 10px;">Repository in Evidenza</h2>
+
     <div class="grid">
       <div class="card">
         <h3>punizione-perfetta.js</h3>
-        <p>Algoritmo in JavaScript per calcolare la parabola e la traiettoria del tiro.</p>
+        <p>Algoritmo in JS per calcolare la traiettoria e la potenza del tiro libero.</p>
       </div>
 
       <div class="card">
         <h3>siuuu-sound-engine.js</h3>
-        <p>Sintetizzatore audio nativo per generare l'urlo a 120dB tramite Web Audio API.</p>
+        <p>Modulo JavaScript per generare il suono dell'urlo tramite Web Audio API.</p>
       </div>
 
       <div class="card">
         <h3>champions-league-deploy.js</h3>
-        <p>Pipeline di deployment ultra-veloce per non sbagliare nei momenti decisivi.</p>
+        <p>Pipeline per rilasciare codice nei momenti più importanti senza sbagliare.</p>
       </div>
     </div>
   </div>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 <strong>CR7Hub</strong> — Creato da <strong>Simone Vorraro</strong> per i veri campioni del codice.</p>
+    <p>© 2026 <strong>CR7Hub</strong> — Progetto realizzato da <strong>Simone Vorraro</strong> per i veri campioni del codice.</p>
   </footer>
 
-  <!-- CODICE JAVASCRIPT -->
+  <!-- SCRIPT JAVASCRIPT -->
   <script>
-    // 1. Inizializzazione delle variabili
-    let siuuuCount = 777;
+    // 1. Variabili di stato
+    let numeroSiuuu = 777;
 
-    // Selezione degli elementi DOM
-    const btnSiuuu = document.getElementById('btnSiuuu');
-    const counterDisplay = document.getElementById('counterValue');
+    // 2. Selezione degli elementi DOM tramite JavaScript
+    const bottoneSiuuu = document.getElementById('btnSiuuu');
+    const elementoContatore = document.getElementById('count');
 
-    // 2. Funzione per generare il suono del SIUUU tramite Web Audio API nativo in JS
-    function riproduciSuonoSiuuu() {
+    // 3. Sintetizzatore audio nativo in JavaScript (Web Audio API)
+    function riproduciAudioSiuuu() {
       try {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
-        const audioCtx = new AudioContext();
+        const ctx = new AudioContext();
 
-        const oscillator = audioCtx.createOscillator();
-        const gainNode = audioCtx.createGain();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
 
-        oscillator.type = 'sawtooth';
+        osc.type = 'sawtooth';
         
-        // Frequenza decrescente che simula l'urlo
-        oscillator.frequency.setValueAtTime(380, audioCtx.currentTime);
-        oscillator.frequency.exponentialRampToValueAtTime(110, audioCtx.currentTime + 0.7);
+        // Frequenza che scende per simulare l'urlo del SIUUU
+        osc.frequency.setValueAtTime(380, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(110, ctx.currentTime + 0.7);
 
-        // Controllo del volume (fade-out)
-        gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.7);
+        // Controllo del volume
+        gain.gain.setValueAtTime(0.25, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.7);
 
-        oscillator.connect(gainNode);
-        gainNode.connect(audioCtx.destination);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
 
-        oscillator.start();
-        oscillator.stop(audioCtx.currentTime + 0.7);
-      } catch (err) {
-        console.log('Audio non supportato dal browser.');
+        osc.start();
+        osc.stop(ctx.currentTime + 0.7);
+      } catch (e) {
+        console.log('Audio non supportato.');
       }
     }
 
-    // 3. Funzione principale eseguita al click del pulsante
-    function gestisciClickSiuuu() {
-      // Incrementa e aggiorna il contatore
-      siuuuCount++;
-      counterDisplay.innerText = siuuuCount;
+    // 4. Funzione che gestisce l'evento di click in JavaScript
+    function eseguiSiuuu() {
+      // Incrementa il contatore
+      numeroSiuuu++;
+      elementoContatore.innerText = numeroSiuuu;
 
-      // Lancio dei coriandoli (Oro, Bianco, Rosso)
+      // Lancia l'effetto coriandoli
       confetti({
         particleCount: 100,
-        spread: 80,
+        spread: 75,
         origin: { y: 0.6 },
         colors: ['#f1c40f', '#ffffff', '#e74c3c']
       });
 
-      // Riproduce il suono
-      riproduciSuonoSiuuu();
+      // Esegue il suono
+      riproduciAudioSiuuu();
     }
 
-    // 4. Assegnazione Event Listener al pulsante via JavaScript
-    btnSiuuu.addEventListener('click', gestisciClickSiuuu);
+    // 5. Assegnazione dell'evento click con addEventListener in JavaScript
+    bottoneSiuuu.addEventListener('click', eseguiSiuuu);
   </script>
 
 </body>
