@@ -1,52 +1,247 @@
-<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Tabella Semplice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabella Anagrafica 2.0 - Dark Dashboard</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        input, button { display: block; margin-bottom: 10px; padding: 6px; width: 200px; }
-        table, th, td { border: 1px solid black; border-collapse: collapse; padding: 8px; margin-top: 15px; }
-        th { background-color: #eee; }
+        :root {
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --primary: #06b6d4;
+            --primary-hover: #0891b2;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --radius: 16px;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Form Container in stile Dark Glass */
+        .form-container {
+            background: var(--bg-card);
+            padding: 35px;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        input {
+            padding: 14px 18px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+            background-color: #0f172a;
+            color: var(--text-main);
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.15);
+            background-color: #111827;
+        }
+
+        button {
+            grid-column: span 2;
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: opacity 0.2s ease, transform 0.1s ease;
+            margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Table Section */
+        .table-container {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background-color: #111827;
+            color: var(--text-muted);
+            padding: 18px 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            border-bottom: 1px solid var(--border);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
 
-    <h3>Inserisci Dati</h3>
-    <input type="text" id="nome" placeholder="Nome">
-    <input type="text" id="cognome" placeholder="Cognome">
-    <input type="text" id="indirizzo" placeholder="Indirizzo">
-    <input type="text" id="citta" placeholder="Città">
-    <input type="number" id="eta" placeholder="Età">
-    
-    <button onclick="aggiungi()">Aggiungi</button>
+    <div class="container">
+        <a href="index.html" class="back-link">&larr; Torna alla Home (Index)</a>
+       
+        <h2>⚡ Gestione Anagrafica</h2>
 
-    <table id="tabella">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Cognome</th>
-                <th>Indirizzo</th>
-                <th>Città</th>
-                <th>Età</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+        <!-- Area di inserimento -->
+        <div class="form-container">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" class="tdati" placeholder="es. Mario">
+            </div>
+            <div class="form-group">
+                <label for="cognome">Cognome</label>
+                <input type="text" id="cognome" class="tdati" placeholder="es. Rossi">
+            </div>
+            <div class="form-group full-width">
+                <label for="indirizzo">Indirizzo</label>
+                <input type="text" id="indirizzo" class="tdati" placeholder="es. Via Roma 10">
+            </div>
+            <div class="form-group">
+                <label for="citta">Città</label>
+                <input type="text" id="citta" class="tdati" placeholder="es. Milano">
+            </div>
+            <div class="form-group">
+                <label for="eta">Età</label>
+                <input type="number" id="eta" class="tdati" placeholder="es. 25">
+            </div>
+            
+            <button type="button" onclick="aggiungiRiga()">Aggiungi alla Tabella</button>
+        </div>
+
+        <h2>📋 Elenco Registrati</h2>
+        <div class="table-container">
+            <table id="tabellaAnagrafica">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Cognome</th>
+                        <th>Indirizzo</th>
+                        <th>Città</th>
+                        <th>Età</th>
+                    </tr>
+                </thead>
+                <tbody id="dati">
+                    <!-- Le righe aggiunte appariranno qui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <script>
-        function aggiungi() {
-           
-            let riga = document.getElementById("tabella").getElementsByTagName("tbody")[0].insertRow();
-            
-            riga.insertCell(0).innerText = document.getElementById("nome").value;
-            riga.insertCell(1).innerText = document.getElementById("cognome").value;
-            riga.insertCell(2).innerText = document.getElementById("indirizzo").value;
-            riga.insertCell(3).innerText = document.getElementById("citta").value;
-            riga.insertCell(4).innerText = document.getElementById("eta").value;
+        function aggiungiRiga() {
+            const nome = document.getElementById('nome').value.trim();
+            const cognome = document.getElementById('cognome').value.trim();
+            const indirizzo = document.getElementById('indirizzo').value.trim();
+            const citta = document.getElementById('citta').value.trim();
+            const eta = document.getElementById('eta').value.trim();
 
-           
-            document.querySelectorAll("input").forEach(i => i.value = "");
+            if (!nome || !cognome || !indirizzo || !citta || !eta) {
+                alert("Compila tutti i campi prima di aggiungere la riga.");
+                return;
+            }
+
+            document.getElementById('dati').innerHTML +=
+                '<tr>' +
+                    '<td>' + nome + '</td>' +
+                    '<td>' + cognome + '</td>' +
+                    '<td>' + indirizzo + '</td>' +
+                    '<td>' + citta + '</td>' +
+                    '<td>' + eta + '</td>' +
+                '</tr>';
         }
     </script>
 
