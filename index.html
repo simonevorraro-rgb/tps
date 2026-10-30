@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CR7 // Indice GitHub & Portfolio</title>
+    <title>CR7 // Portfolio & Codebase</title>
     <!-- Google Fonts: Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;0,900;1,900&display=swap" rel="stylesheet">
     <!-- FontAwesome per le icone -->
@@ -128,86 +128,30 @@
             margin-top: 4px;
         }
 
-        /* Sezione Controlli: Ricerca e Filtri */
-        .controls-section {
+        /* Sezione Titoli / Sezioni Principali */
+        .section-title {
             max-width: 1200px;
-            margin: 0 auto 35px;
+            margin: 0 auto 20px;
             padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .search-bar {
-            position: relative;
-            flex: 1;
-            min-width: 280px;
-        }
-
-        .search-bar input {
-            width: 100%;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 14px 20px 14px 45px;
-            border-radius: 30px;
-            color: white;
-            font-size: 0.95rem;
-            outline: none;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .search-bar input:focus {
-            border-color: var(--gold);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-        }
-
-        .search-bar i {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--gold);
-        }
-
-        .filter-buttons {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 1.5rem;
+            font-weight: 900;
+            font-style: italic;
             text-transform: uppercase;
-            transition: all 0.3s ease;
+            border-left: 4px solid var(--gold);
+            padding-left: 15px;
         }
 
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--gold-gradient);
-            color: #000;
-            border-color: transparent;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-        }
-
-        /* Griglia dei Repository */
-        .repos-grid {
+        /* Griglia dei Progetti Principali */
+        .projects-grid {
             max-width: 1200px;
-            margin: 0 auto 60px;
+            margin: 0 auto 50px;
             padding: 0 20px;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 25px;
         }
 
-        .repo-card {
+        .project-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -220,7 +164,7 @@
             overflow: hidden;
         }
 
-        .repo-card::before {
+        .project-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 3px;
@@ -229,24 +173,24 @@
             transition: opacity 0.3s ease;
         }
 
-        .repo-card:hover {
+        .project-card:hover {
             transform: translateY(-6px);
             border-color: var(--gold);
             box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 20px rgba(212, 175, 55, 0.15);
         }
 
-        .repo-card:hover::before {
+        .project-card:hover::before {
             opacity: 1;
         }
 
-        .repo-header {
+        .project-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 12px;
         }
 
-        .repo-title {
+        .project-title {
             font-size: 1.2rem;
             font-weight: 900;
             color: white;
@@ -257,16 +201,16 @@
             transition: color 0.2s;
         }
 
-        .repo-title:hover {
+        .project-title:hover {
             color: var(--gold);
         }
 
-        .repo-title i {
+        .project-title i {
             font-size: 1rem;
             color: var(--gold);
         }
 
-        .repo-badge {
+        .project-badge {
             background: rgba(212, 175, 55, 0.1);
             border: 1px solid var(--border-color);
             color: var(--gold);
@@ -277,7 +221,7 @@
             font-weight: 700;
         }
 
-        .repo-desc {
+        .project-desc {
             color: var(--text-muted);
             font-size: 0.9rem;
             line-height: 1.5;
@@ -285,7 +229,7 @@
             flex-grow: 1;
         }
 
-        .repo-footer {
+        .project-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -293,7 +237,7 @@
             padding-top: 15px;
         }
 
-        .repo-lang {
+        .project-lang {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -307,65 +251,11 @@
             border-radius: 50%;
         }
 
-        .repo-actions {
-            display: flex;
-            gap: 15px;
-        }
-
-        .repo-action-btn {
+        .project-action-btn {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: color 0.2s;
         }
 
-        .repo-action-btn:hover {
-            color: var(--gold);
-        }
-
-        /* Sezione Easter Egg SIUUU */
-        .siu-container {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .siu-btn {
-            background: var(--gold-gradient);
-            color: #000;
-            border: none;
-            padding: 16px 40px;
-            font-size: 1rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .siu-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.7);
-        }
-
-        /* Overlay Animazione SIU */
-        #siu-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.92);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        #siu-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .siu-text {
+        .project-action-
