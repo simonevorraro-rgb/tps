@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabella Semplice</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        input, button { display: block; margin-bottom: 10px; padding: 6px; width: 200px; }
+        table, th, td { border: 1px solid black; border-collapse: collapse; padding: 8px; margin-top: 15px; }
+        th { background-color: #eee; }
+    </style>
+</head>
+<body>
+
+    <h3>Inserisci Dati</h3>
+    <input type="text" id="nome" placeholder="Nome">
+    <input type="text" id="cognome" placeholder="Cognome">
+    <input type="text" id="indirizzo" placeholder="Indirizzo">
+    <input type="text" id="citta" placeholder="Città">
+    <input type="number" id="eta" placeholder="Età">
+    
+    <button onclick="aggiungi()">Aggiungi</button>
+
+    <table id="tabella">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Indirizzo</th>
+                <th>Città</th>
+                <th>Età</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        function aggiungi() {
+            // Aggiunge una riga alla tabella prendendo direttamente i valori dagli input
+            let riga = document.getElementById("tabella").getElementsByTagName("tbody")[0].insertRow();
+            
+            riga.insertCell(0).innerText = document.getElementById("nome").value;
+            riga.insertCell(1).innerText = document.getElementById("cognome").value;
+            riga.insertCell(2).innerText = document.getElementById("indirizzo").value;
+            riga.insertCell(3).innerText = document.getElementById("citta").value;
+            riga.insertCell(4).innerText = document.getElementById("eta").value;
+
+            // Pulisce i campi
+            document.querySelectorAll("input").forEach(i => i.value = "");
+        }
+    </script>
+
+</body>
+</html>
