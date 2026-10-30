@@ -36,7 +36,7 @@
 
     <script>
         function aggiungi() {
-            // Aggiunge una riga alla tabella prendendo direttamente i valori dagli input
+           
             let riga = document.getElementById("tabella").getElementsByTagName("tbody")[0].insertRow();
             
             riga.insertCell(0).innerText = document.getElementById("nome").value;
@@ -45,7 +45,7 @@
             riga.insertCell(3).innerText = document.getElementById("citta").value;
             riga.insertCell(4).innerText = document.getElementById("eta").value;
 
-            // Pulisce i campi
+           
             document.querySelectorAll("input").forEach(i => i.value = "");
         }
     </script>
